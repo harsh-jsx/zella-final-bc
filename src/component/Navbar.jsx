@@ -638,6 +638,7 @@ const Navbar = ({ setappModal }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const isMobileHigh = useMediaQuery("(max-width:1600px)");
+  const [popup, setpopup] = useState(true);
 
   const assets = [
     {
@@ -1033,9 +1034,7 @@ const Navbar = ({ setappModal }) => {
                     component={"button"}
                     onClick={() => {
                       if (itm.link === "err") {
-                        toast.error(
-                          "You need to be verified in order to do that."
-                        );
+                        setpopup(true);
                         return;
                       }
                       itm.link && navigate(itm.link);
@@ -1996,9 +1995,7 @@ const Navbar = ({ setappModal }) => {
                       >
                         <List component="div" disablePadding>
                           {data.dropdown.map((link) => (
-                            <ListItemButton
-                              onClick={() => (window.location.href = link.link)}
-                            >
+                            <ListItemButton onClick={() => console.log("hi")}>
                               <Typography
                                 variant="p"
                                 sx={{
@@ -2027,6 +2024,66 @@ const Navbar = ({ setappModal }) => {
           )}
         </Toolbar>
       </AppBar>
+
+      <div
+        id="custom-popup"
+        role="dialog"
+        aria-modal="true"
+        className="custom-popup v-dialog__content v-dialog__content--active"
+        style={{
+          zIndex: 999999999999,
+          // showed is not a valid style, so omit it
+          display: popup ? "flex" : "none",
+        }}
+      >
+        <div
+          tabIndex={0}
+          className="discard-modal v-dialog dialog v-dialog--active"
+          style={{
+            transformOrigin: "center center",
+            width: "500px",
+            paddingTop: "25px",
+            textAlign: "center",
+          }}
+        >
+          <div className="dialog__close" onClick={() => setpopup(false)}>
+            <i
+              aria-hidden="true"
+              className="v-icon notranslate dialog__close__icon mdi mdi-close theme--light"
+            ></i>
+          </div>
+          <div className="popup-img-wrapper popup-error">
+            <img
+              src="https://bit-frame.net/assets/img/error-cross.svg"
+              width="40px"
+              height="40px"
+              style={{ color: "white" }}
+              alt="error"
+            />
+          </div>
+          <div className="discard-modal__title">Error Occurred</div>
+          <div className="discard-modal__text">
+            You don't have full access to our exchange service yet.
+            <br /> To unlock all features and functionality, you need to get
+            <br />
+            <strong>Lv.2 Verification</strong>. This will only take a few
+            minutes and is required for security and compliance reasons. To
+            begin the verification process, go to the{" "}
+            <a className="?violethrefintext?" href="?../profile/verification?">
+              Verification page
+            </a>{" "}
+            and follow the required steps.
+          </div>
+          <button
+            type="button"
+            onClick={() => window.location.replace("../profile/verification")}
+            className="discard-modal__verification-btn v-btn v-btn--is-elevated v-btn--has-bg theme--light v-size--default"
+            style={{ width: "100%" }}
+          >
+            <span className="v-btn__content">Verification</span>
+          </button>
+        </div>
+      </div>
 
       {/* Drawer for mobile nav links only */}
       <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer}>

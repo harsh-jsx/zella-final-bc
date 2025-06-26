@@ -12,6 +12,7 @@ import {
   useTheme,
   useMediaQuery,
   Box,
+  Switch,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import IconButton from "@mui/material/IconButton";
@@ -47,6 +48,7 @@ const Withdrawl = ({ assets, setwithdrawlModal }) => {
   const [selectedChain, setselectedChain] = useState(null);
   const [amount, setamount] = useState("");
   const [WithdrawlAddress, setWithdrawlAddress] = useState("");
+  const [withdrawlamoutn, setwithdrawlamoutn] = useState(0);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -655,6 +657,69 @@ const Withdrawl = ({ assets, setwithdrawlModal }) => {
                     fontWeight: 500,
                   }}
                 />
+                <TextField
+                  label="Amount"
+                  variant="outlined"
+                  fullWidth
+                  type="number"
+                  value={withdrawlamoutn}
+                  onChange={(e) => setwithdrawlamoutn(e.target.value)}
+                  sx={{
+                    mt: 3,
+                    height: 48,
+                    marginBottom: "20px",
+                    fontFamily: "Roboto",
+                    fontWeight: 500,
+                  }}
+                />
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  justifyContent="flex-start"
+                  alignItems="center"
+                >
+                  <Switch />
+                  <Typography
+                    sx={{
+                      opacity: 0.5,
+                      fontSize: 14,
+                      fontFamily: "Roboto",
+                      fontWeight: 500,
+                    }}
+                  >
+                    Show amount with commission
+                  </Typography>
+                </Stack>
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  justifyContent="space-between"
+                  alignItems="center"
+                  sx={{
+                    py: 2,
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      opacity: 0.5,
+                      fontSize: 16,
+                      fontFamily: "Roboto",
+                      fontWeight: 500,
+                    }}
+                  >
+                    You'll pay {withdrawlamoutn} BTC
+                  </Typography>
+                  <Typography
+                    sx={{
+                      opacity: 0.5,
+                      fontSize: 16,
+                      fontFamily: "Roboto",
+                      fontWeight: 500,
+                    }}
+                  >
+                    You'll get {withdrawlamoutn} BTC
+                  </Typography>
+                </Stack>
                 <Button
                   variant="contained"
                   onClick={kuchHogaIsse}
