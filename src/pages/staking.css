@@ -1,0 +1,168 @@
+/* staking.css */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+.staking-page {
+  font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
+  color: #1a1a1a;
+  background: #fff;
+}
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+.staking-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #000;
+  color: #fff;
+  padding: 60px 80px;
+}
+
+.staking-hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.staking-hero p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.staking-hero img {
+  max-width: 300px;
+  height: auto;
+}
+
+.staking-plans {
+  padding: 40px 80px;
+  background: #fafafa;
+}
+
+.staking-plans h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.tabs .active {
+  border-color: #000;
+}
+
+.staking-plans input[type="text"] {
+  padding: 10px 14px;
+  width: 250px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 16px;
+  border-bottom: 1px solid #eaeaea;
+  vertical-align: middle;
+}
+
+th {
+  font-weight: 600;
+  background: #f2f2f2;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+.periods {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.periods button {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.periods button:hover {
+  background: #f1f1f1;
+}
+
+.choose {
+  background: #fdb400;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.choose:hover {
+  background: #e0a100;
+}
+
+.staking-active {
+  padding: 40px 80px;
+}
+
+.no-records {
+  text-align: center;
+  padding: 40px;
+}
+
+.no-records img {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+.faq {
+  padding: 40px 80px;
+  background: #f9f9f9;
+}
+
+.faq h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+details summary {
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+details p {
+  margin-top: 10px;
+  font-size: 16px;
+}
