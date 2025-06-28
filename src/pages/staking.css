@@ -1,14 +1,18 @@
 /* staking.css */
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-.staking-page {
-  font-family: "Roboto", sans-serif;
-  padding: 0;
-  margin: 0;
-  color: #1a1a1a;
-  background: #fff;
-}
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@400;700&display=swap");
+
+body,
+html,
 * {
   font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.staking-page {
+  color: #1a1a1a;
+  background: #fff;
 }
 
 .staking-hero {
@@ -18,6 +22,7 @@
   background: #000;
   color: #fff;
   padding: 60px 80px;
+  flex-wrap: wrap;
 }
 
 .staking-hero h1 {
@@ -67,42 +72,51 @@
 
 .staking-plans input[type="text"] {
   padding: 10px 14px;
-  width: 250px;
+  width: 100%;
+  max-width: 400px;
   border-radius: 6px;
   border: 1px solid #ccc;
   margin-bottom: 20px;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #fff;
+.staking-table {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-th,
-td {
-  text-align: left;
+.staking-table-header,
+.staking-table-row {
+  display: grid;
+  grid-template-columns: 1.5fr 2fr 1fr 2fr auto;
+  align-items: center;
+  gap: 16px;
   padding: 16px;
-  border-bottom: 1px solid #eaeaea;
-  vertical-align: middle;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
 }
 
-th {
-  font-weight: 600;
+.staking-table-header {
   background: #f2f2f2;
+  font-weight: bold;
+}
+
+.asset-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .icon {
   width: 32px;
   height: 32px;
-  margin-right: 12px;
-  vertical-align: middle;
 }
 
 .periods {
   display: flex;
-  gap: 6px;
   flex-wrap: wrap;
+  gap: 6px;
 }
 
 .periods button {
@@ -126,6 +140,7 @@ th {
   font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .choose:hover {
@@ -165,4 +180,42 @@ details summary {
 details p {
   margin-top: 10px;
   font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .staking-hero {
+    flex-direction: column;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .staking-hero img {
+    margin-top: 20px;
+  }
+
+  .staking-plans,
+  .staking-active,
+  .faq {
+    padding: 20px;
+  }
+
+  .staking-table-header {
+    display: none;
+  }
+
+  .staking-table-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .asset-cell {
+    gap: 10px;
+  }
+
+  .periods {
+    justify-content: flex-start;
+  }
 }

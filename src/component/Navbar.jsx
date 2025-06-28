@@ -54,7 +54,7 @@ const navItems = [
     dropdown: [
       {
         header: "Markets",
-        link: "/profile/wallet?modal=deposit",
+        link: "err",
 
         subHeader: "View the latest crypto prices and volume",
         icon: (
@@ -143,7 +143,7 @@ const navItems = [
       },
       {
         header: "Spot",
-        link: "/profile/wallet?modal=deposit",
+        link: "err",
 
         subHeader: "Buy and sell crypto with ease",
         icon: (
@@ -183,7 +183,7 @@ const navItems = [
       },
       {
         header: "Margin",
-        link: "/profile/wallet?modal=deposit",
+        link: "err",
 
         subHeader: "Trade with leverage",
         icon: (
@@ -223,7 +223,7 @@ const navItems = [
       },
       {
         header: "Tournament",
-        link: "/profile/wallet?modal=deposit",
+        link: "err",
 
         subHeader: "Increase your trading volume with our Trading Tournament",
         icon: (
@@ -454,7 +454,7 @@ const navItems = [
     dropdown: [
       {
         header: "Fiat Deposit",
-        link: "/profile/wallet?modal=deposit",
+        link: "err",
         subHeader: "Buy crypto within seconds via Bank Transfer or Bank Card",
         icon: (
           <img
@@ -466,7 +466,7 @@ const navItems = [
       },
       {
         header: "P2P Trading",
-        link: "/profile/wallet?modal=deposit",
+        link: "err",
 
         subHeader: "Buy crypto using local payment methods",
         icon: (
@@ -638,7 +638,7 @@ const Navbar = ({ setappModal }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const isMobileHigh = useMediaQuery("(max-width:1600px)");
-  const [popup, setpopup] = useState(true);
+  const [popup, setpopup] = useState(false);
 
   const assets = [
     {
@@ -1840,7 +1840,15 @@ const Navbar = ({ setappModal }) => {
                             {data.dropdown.map((link) => (
                               <ListItemButton
                                 component={"button"}
-                                onClick={() => link.link && navigate(link.link)}
+                                // onClick={() => link.link && navigate(link.link)}
+                                onClick={() => {
+                                  if (link.link === "err") {
+                                    setpopup(true);
+                                    return;
+                                  } else {
+                                    link.link && navigate(link.link);
+                                  }
+                                }}
                               >
                                 <Typography
                                   variant="p"

@@ -1,8 +1,10 @@
+// Staking.jsx
 import React, { useState } from "react";
 import "./staking.css";
 import toast from "react-hot-toast";
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
+
 const cryptoPlans = [
   {
     icon: "https://bit-frame.net/assets/img/coins/BTC.png",
@@ -114,72 +116,64 @@ export default function StakingPage() {
             onChange={(e) => setSearch(e.target.value)}
           />
 
-          <table>
-            <thead>
-              <tr>
-                <th>Assets</th>
-                <th>Period</th>
-                <th>Rate</th>
-                <th>Deposit Range</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {cryptoPlans
-                .filter((plan) =>
-                  plan.asset.toLowerCase().includes(search.toLowerCase())
-                )
-                .map((plan, i) => (
-                  <tr key={i}>
-                    <td>
-                      <img src={plan.icon} alt={plan.asset} className="icon" />
-                      <span>
-                        <b>{plan.asset}</b> <br />
-                        <small>{plan.name}</small>
-                      </span>
-                    </td>
-                    <td>
-                      <div className="periods">
-                        {periods.map((p) => (
-                          <button key={p}>{p} Days</button>
-                        ))}
-                      </div>
-                    </td>
-                    <td>{plan.rate}</td>
-                    <td>{plan.deposit}</td>
-                    <td>
-                      <button
-                        className="choose"
-                        onClick={() =>
-                          toast.error(
-                            "Please complete your identity verification first."
-                          )
-                        }
-                      >
-                        Choose Plan
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
+          <div className="staking-table">
+            <div className="staking-table-header">
+              <div>Assets</div>
+              <div>Period</div>
+              <div>Rate</div>
+              <div>Deposit Range</div>
+              <div></div>
+            </div>
+            {cryptoPlans
+              .filter((plan) =>
+                plan.asset.toLowerCase().includes(search.toLowerCase())
+              )
+              .map((plan, i) => (
+                <div key={i} className="staking-table-row">
+                  <div className="asset-cell">
+                    <img src={plan.icon} alt={plan.asset} className="icon" />
+                    <span>
+                      <b>{plan.asset}</b> <br />
+                      <small>{plan.name}</small>
+                    </span>
+                  </div>
+                  <div className="periods">
+                    {periods.map((p) => (
+                      <button key={p}>{p} Days</button>
+                    ))}
+                  </div>
+                  <div>{plan.rate}</div>
+                  <div>{plan.deposit}</div>
+                  <div>
+                    <button
+                      className="choose"
+                      onClick={() =>
+                        toast.error(
+                          "Please complete your identity verification first."
+                        )
+                      }
+                    >
+                      Choose Plan
+                    </button>
+                  </div>
+                </div>
+              ))}
+          </div>
         </section>
 
         <section className="staking-active">
-          <h2>You Active Plans</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Assets</th>
-                <th>Plan</th>
-                <th>Deposited</th>
-                <th>Realtime Profit</th>
-                <th>Open Time</th>
-                <th>Close Time</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-          </table>
+          <h2>Your Active Plans</h2>
+          <div className="staking-table">
+            <div className="staking-table-header">
+              <div>Assets</div>
+              <div>Plan</div>
+              <div>Deposited</div>
+              <div>Realtime Profit</div>
+              <div>Open Time</div>
+              <div>Close Time</div>
+              <div>Action</div>
+            </div>
+          </div>
           <div className="no-records">
             <img
               src="https://cdn-icons-png.flaticon.com/512/7486/7486803.png"
